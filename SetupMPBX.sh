@@ -118,15 +118,14 @@ fi
 
 apt-get install build-essential subversion libncurses-dev libssl-dev libxml2-dev sqlite3 libsqlite3-dev uuid uuid-dev libjansson-dev
 
-#wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-current.tar.gz
+wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-current.tar.gz
 
 
 tar zxvf asterisk-13-current.tar.gz
 cd asterisk-13.1.0
 
+./contrib/scripts/install_prereq install
 
-contrib/scripts/install_prereq install
-#contrib/scripts/get_mp3_source.sh
 
 ./configure
 make menuselect
@@ -134,6 +133,10 @@ make
 make install
 #make samples
 make config
+
+
+cp /root/mpbx/conf/* /etc/asterisk/
+
 
 
 #     vim-nox 
