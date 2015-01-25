@@ -120,7 +120,6 @@ apt-get install build-essential subversion libncurses-dev libssl-dev libxml2-dev
 
 wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-current.tar.gz
 
-
 tar zxvf asterisk-13-current.tar.gz
 cd asterisk-13.1.0
 
@@ -131,30 +130,25 @@ cd asterisk-13.1.0
 make menuselect
 make
 make install
-#make samples
+    #make samples
 make config
 
+# fichiers de config
+cp -i /root/mpbx/conf/* /etc/asterisk/
 
-#   cp /root/mpbx/conf/* /etc/asterisk/
-#   /var/spool/asterisk/voicemail/default/233
+# les voix IVR
+cp -i /root/mpbx/sounds/en/* /var/lib/asterisk/sounds/en/
+cp -i /root/mpbx/sounds/fr/* /var/lib/asterisk/sounds/fr/
+
+# voicemail sales 
+cp -i /root/mpbx/sounds/W4W_SALES_VOICEMAIL.ulaw /var/spool/asterisk/voicemail/default/200/
+mv -i /var/spool/asterisk/voicemail/default/200/W4W_SALES_VOICEMAIL.ulaw /var/spool/asterisk/voicemail/default/200/temp.ulaw
+
+# cp filter fail2ban
+cp -i /root/mpbx/fail2ban/jail.conf /etc/fail2ban/
+cp -i /root/mpbx/fail2ban/asterisk.conf /etc/fail2ban/filter.d/
+
+service fail2ban restart
+service asterisk restart
 
 
-
-
-
-#     vim-nox 
-#   
-#     libiksemel-dev 
-# #
-#
-#     mpg123 
-#     unixodbc 
-#     libcurl3 
-#     uuid 
-#     uuid-dev 
-#     xslt-dev 
-#     jansson-dev 
-#     libjansson-dev
-     
-#apt-get install build-essential zlib1g-dev libxml2-dev libncurses-dev libnewt-dev \
-#linux-headers-$(uname -r) libmysqlclient-dev libsqlite3-dev libssl-dev subversion wget
