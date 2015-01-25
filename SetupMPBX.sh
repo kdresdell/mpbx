@@ -135,7 +135,10 @@ make install
 make config
 
 
-cp /root/mpbx/conf/* /etc/asterisk/
+#   cp /root/mpbx/conf/* /etc/asterisk/
+#   /var/spool/asterisk/voicemail/default/233
+
+
 
 
 
